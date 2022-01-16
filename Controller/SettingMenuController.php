@@ -71,9 +71,11 @@ class SettingMenuController extends AbstractController
         }
 
         uasort($menuTree, function ($a, $b) {
-            if ($a['sort_order'] === null && $b['sort_order'] !== null) return 1;
-            if ($a['sort_order'] > $b['sort_order']) return 1;
-            if ($a['sort_order'] < $b['sort_order']) return -1;
+            $aSortOrder = $a['sort_order'] ?? null;
+            $bSortOrder = $b['sort_order'] ?? null;
+            if ($aSortOrder === null && $bSortOrder !== null) return 1;
+            if ($aSortOrder > $bSortOrder) return 1;
+            if ($aSortOrder < $bSortOrder) return -1;
         });
 
         return array_values($menuTree);
