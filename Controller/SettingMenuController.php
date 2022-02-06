@@ -50,6 +50,9 @@ class SettingMenuController extends AbstractController
         }
 
         foreach ($items as $key => $item) {
+            if (isset($item['status']) && $item['status'] === 'disable') {
+                continue;
+            }
             $menuItemData = [
                 'name' => $key,
                 'item_label' => $item['label'] ?? $key,
