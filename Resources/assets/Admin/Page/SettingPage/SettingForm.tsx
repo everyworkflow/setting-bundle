@@ -32,7 +32,7 @@ const SettingForm = () => {
         (async () => {
             try {
                 setLoading(true);
-                const response: any = await Remote.get('/setting/' + code);
+                const response: any = await Remote.get('/setting/' + code + '?for=data-form');
                 handleResponse(response);
                 setRemoteStatus(200);
             } catch (error: any) {
